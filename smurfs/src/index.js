@@ -1,6 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./components/App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import logger from 'redux-logger'
+import './index.css';
+import App from './components/App';
+import smurfReducer from './reducer/smurfReducer'
 
-ReactDOM.render(<App />, document.getElementById("root"));
+
+
+const store = createStore(smurfReducer, applyMiddleware(thunk, logger))
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+    <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
