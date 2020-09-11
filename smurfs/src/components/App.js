@@ -8,7 +8,7 @@ import { fetchSmurfs } from '../actions/smurfActions';
 
 
 
-function App({fetchSmurfs, loadingSmurf, message}) {
+function App({fetchSmurfs}) {
 
   useEffect(() => {
     fetchSmurfs()
